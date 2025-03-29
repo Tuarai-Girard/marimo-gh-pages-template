@@ -6,7 +6,6 @@ app = marimo.App(width="medium")
 
 @app.cell
 def _():
-    import ssl
     from simple_salesforce import Salesforce
     import numpy as np
     import altair as alt
@@ -17,17 +16,17 @@ def _():
 
 
 @app.cell
-try:
-    sf = Salesforce(
-        username=os.getenv('SF_USERNAME'), 
-        password=os.getenv('SF_PASSWORD'), 
-        security_token=os.getenv('SF_SECURITY_TOKEN')
-    )
-    logging.info("Connected to Salesforce successfully.")
-except Exception as e:
-    logging.error(f"Error connecting to Salesforce: {e}")
-    raise
-
+def _():
+    try:
+        sf = Salesforce(
+            username=os.getenv('SF_USERNAME'), 
+            password=os.getenv('SF_PASSWORD'), 
+            security_token=os.getenv('SF_SECURITY_TOKEN')
+        )
+        logging.info("Connected to Salesforce successfully.")
+    except Exception as e:
+    return logging.error(f"Error connecting to Salesforce: {e}")
+        raise
 
 @app.cell
 def _(pd, sf):
