@@ -6,11 +6,13 @@ app = marimo.App(width="medium")
 
 @app.cell
 def _():
+    import ssl
     from simple_salesforce import Salesforce
     import numpy as np
     import altair as alt
     import pandas as pd
     import marimo as mo
+    import logging
     return alt, mo, np, pd, Salesforce
 
 
