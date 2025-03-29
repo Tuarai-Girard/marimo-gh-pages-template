@@ -7,8 +7,11 @@ app = marimo.App(width="medium")
 @app.cell
 def _():
     from simple_salesforce import Salesforce
+    import numpy as np
+    import altair as alt
     import pandas as pd
-    return Salesforce, pd
+    import marimo as mo
+    return alt, mo, np, pd, Salesforce
 
 
 @app.cell
