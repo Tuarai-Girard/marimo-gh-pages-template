@@ -15,9 +15,16 @@ def _():
 
 
 @app.cell
-def _(Salesforce):
-    sf = Salesforce(username = "tuarai.girard@concept3d.com" ,password = "Vkdenver91*", security_token = "xTIsmzrvI18SLvcLdFo5vadX")
-    return (sf,)
+try:
+    sf = Salesforce(
+        username=os.getenv('SF_USERNAME'), 
+        password=os.getenv('SF_PASSWORD'), 
+        security_token=os.getenv('SF_SECURITY_TOKEN')
+    )
+    logging.info("Connected to Salesforce successfully.")
+except Exception as e:
+    logging.error(f"Error connecting to Salesforce: {e}")
+    raise
 
 
 @app.cell
